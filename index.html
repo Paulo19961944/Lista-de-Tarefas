@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Minhas Tarefas</h1>
+        <div class="task-input">
+            <input type="text" id="taskInput" placeholder="Adicionar nova tarefa...">
+            <button id="addTaskBtn">Adicionar</button>
+        </div>
+        <ul id="taskList">
+            </ul>
+        <div class="progress-container">
+            <div class="progress-circle">
+                <div class="progress-circle-inner">
+                    <span id="progressPercentage">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="src/scripts/script.js"></script>
+</body>
+</html>

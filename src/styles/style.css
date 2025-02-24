@@ -1,0 +1,217 @@
+body {
+    /* Define a fonte padrão para o corpo da página */
+    font-family: 'Montserrat', sans-serif;
+    /* Aplica um gradiente linear ao fundo da página */
+    background: linear-gradient(135deg, #e0f2fe, #b3e5fc);
+    /* Configura o corpo para usar flexbox */
+    display: flex;
+    /* Centraliza o conteúdo horizontalmente */
+    justify-content: center;
+    /* Centraliza o conteúdo verticalmente */
+    align-items: center;
+    /* Garante que o corpo ocupe pelo menos a altura total da viewport */
+    min-height: 100vh;
+    /* Remove a margem padrão do corpo */
+    margin: 0;
+}
+
+/* Estiliza o contêiner principal */
+.container {
+    /* Define a largura para ocupar 90% da tela */
+    width: 90%;
+    /* Define a largura máxima para 500px */
+    max-width: 500px;
+    /* Define a cor de fundo como branco */
+    background-color: #fff;
+    /* Adiciona bordas arredondadas */
+    border-radius: 8px;
+    /* Adiciona uma sombra suave */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Define o preenchimento interno */
+    padding: 20px 40px;
+    /* Centraliza o contêiner e adiciona margem */
+    margin: 20px auto;
+}
+
+/* Estiliza o título h1 */
+h1 {
+    /* Centraliza o texto */
+    text-align: center;
+    /* Define a cor do texto */
+    color: #333;
+    /* Adiciona margem inferior */
+    margin-bottom: 20px;
+    /* Ajusta o tamanho da fonte */
+    font-size: 1.5em;
+}
+
+/* Estiliza a entrada de tarefas */
+.task-input {
+    /* Configura para usar flexbox */
+    display: flex;
+    /* Adiciona margem inferior */
+    margin-bottom: 20px;
+}
+
+/* Estiliza o campo de entrada de texto */
+input[type="text"] {
+    /* Permite que o campo de entrada expanda para preencher o espaço disponível */
+    flex: 1;
+    /* Define o preenchimento interno */
+    padding: 10px;
+    /* Define a borda */
+    border: 1px solid #ddd;
+    /* Adiciona bordas arredondadas apenas nos cantos esquerdos */
+    border-radius: 4px 0 0 4px;
+    /* Ajusta o tamanho da fonte */
+    font-size: 1em;
+}
+
+/* Estiliza o botão */
+button {
+    /* Define a cor de fundo */
+    background-color: #007bff;
+    /* Define a cor do texto */
+    color: #fff;
+    /* Remove a borda */
+    border: none;
+    /* Define o preenchimento interno */
+    padding: 10px 15px;
+    /* Define o cursor como ponteiro */
+    cursor: pointer;
+    /* Ajusta o tamanho da fonte */
+    font-size: 1em;
+    /* Adiciona bordas arredondadas apenas nos cantos direitos */
+    border-radius: 0 4px 4px 0;
+}
+
+/* Estiliza a lista não ordenada */
+ul {
+    /* Remove o estilo de lista padrão */
+    list-style: none;
+    /* Remove o preenchimento interno */
+    padding: 0;
+}
+
+/* Estiliza os itens da lista */
+li {
+    /* Configura para usar flexbox */
+    display: flex;
+    /* Alinha os itens verticalmente */
+    align-items: center;
+    /* Define o preenchimento interno */
+    padding: 10px;
+    /* Adiciona uma borda inferior */
+    border-bottom: 1px solid #eee;
+}
+
+/* Remove a borda inferior do último item da lista */
+li:last-child {
+    border-bottom: none;
+}
+
+/* Estiliza a caixa de seleção */
+input[type="checkbox"] {
+    /* Adiciona margem à direita */
+    margin-right: 10px;
+    /* Aumenta o tamanho da caixa de seleção */
+    transform: scale(1.2);
+}
+
+/* Estiliza o contêiner do círculo de progresso */
+.progress-container {
+    /* Adiciona margem superior */
+    margin-top: 20px;
+    /* Configura para usar flexbox */
+    display: flex;
+    /* Centraliza o conteúdo horizontalmente */
+    justify-content: center;
+}
+
+/* Estiliza o círculo de progresso */
+.progress-circle {
+    /* Define a largura */
+    width: 120px;
+    /* Define a altura */
+    height: 120px;
+    /* Define a forma como um círculo */
+    border-radius: 50%;
+    /* Aplica um gradiente cônico ao fundo */
+    background: conic-gradient(#007bff 0%, #007bff 0%, white 0%, white 100%);
+    /* Configura para usar flexbox */
+    display: flex;
+    /* Centraliza o conteúdo horizontalmente */
+    justify-content: center;
+    /* Centraliza o conteúdo verticalmente */
+    align-items: center;
+}
+
+/* Estiliza o círculo interno do progresso */
+.progress-circle-inner {
+    /* Define a largura */
+    width: 96px;
+    /* Define a altura */
+    height: 96px;
+    /* Define a forma como um círculo */
+    border-radius: 50%;
+    /* Define a cor de fundo como branco */
+    background-color: #fff;
+    /* Configura para usar flexbox */
+    display: flex;
+    /* Centraliza o conteúdo horizontalmente */
+    justify-content: center;
+    /* Centraliza o conteúdo verticalmente */
+    align-items: center;
+    /* Ajusta o tamanho da fonte */
+    font-size: 1.2em;
+    /* Define a cor do texto */
+    color: #333;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    /* Ajusta o preenchimento do contêiner para telas menores */
+    .container {
+        padding: 20px;
+    }
+
+    /* Ajusta o tamanho do círculo de progresso para telas menores */
+    .progress-circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    /* Ajusta o tamanho do círculo interno do progresso para telas menores */
+    .progress-circle-inner {
+        width: 80px;
+        height: 80px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajusta o tamanho da fonte e o preenchimento do contêiner para telas menores ainda */
+    .container {
+        font-size: 0.75em;
+        padding: 20px;
+        margin: 64px 32px;
+    }
+
+    /* Ajusta o tamanho da fonte do campo de entrada e do botão para telas menores */
+    input[type="text"],
+    button {
+        font-size: 0.9em;
+    }
+
+    /* Ajusta o tamanho do círculo de progresso para telas menores ainda */
+    .progress-circle {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Ajusta o tamanho do círculo interno do progresso para telas menores ainda */
+    .progress-circle-inner {
+        width: 64px;
+        height: 64px;
+    }
+}
