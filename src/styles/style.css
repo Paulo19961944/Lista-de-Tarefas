@@ -45,6 +45,7 @@ h1 {
     font-size: 1.5em;
 }
 
+
 /* Estiliza a entrada de tarefas */
 .task-input {
     /* Configura para usar flexbox */
@@ -53,18 +54,31 @@ h1 {
     margin-bottom: 20px;
 }
 
+/* Estiliza todos os campos de entrada de texto*/
+input{
+    /* Define a fonte padrão para o corpo da página */
+    font-family: 'Montserrat', sans-serif;
+    /* Define a borda */
+    border: 1px solid #007bff;
+    outline: 0;
+}
+
 /* Estiliza o campo de entrada de texto */
 input[type="text"] {
     /* Permite que o campo de entrada expanda para preencher o espaço disponível */
     flex: 1;
     /* Define o preenchimento interno */
     padding: 10px;
-    /* Define a borda */
+    /* Define a Borda */
     border: 1px solid #ddd;
     /* Adiciona bordas arredondadas apenas nos cantos esquerdos */
     border-radius: 4px 0 0 4px;
     /* Ajusta o tamanho da fonte */
     font-size: 1em;
+}
+
+input[type="text"]:focus{
+    border: 1px solid #007bff;
 }
 
 /* Estiliza o botão */
@@ -85,8 +99,30 @@ button {
     border-radius: 0 4px 4px 0;
 }
 
+button:nth-child(3){
+    margin-left: 20px;
+}
+
+button:nth-child(3), button:nth-child(4){
+    background-color: transparent;
+    padding: 10px;
+}
+
+button > i.fa-edit{
+    position: absolute;
+    right: 40px;
+    color: #007bff;
+}
+
+button > i.fa-trash{
+    position: absolute;
+    right: 0;
+    color: #F56565;
+}
+
 /* Estiliza a lista não ordenada */
 ul {
+    position: relative;
     /* Remove o estilo de lista padrão */
     list-style: none;
     /* Remove o preenchimento interno */

@@ -9,8 +9,8 @@ const progressCircle = document.querySelector('.progress-circle');
 // Obtém a referência do elemento de texto da porcentagem de progresso
 const progressPercentage = document.getElementById('progressPercentage');
 
-// Inicializa o array de tarefas vazio
-let tasks = [];
+// Inicializa o array de tarefas vazio ou recupera do localStorage
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 // Função para atualizar o progresso
 function updateProgress() {
@@ -34,6 +34,8 @@ function addTask() {
         tasks.push({ text: taskText, completed: false });
         // Limpa o campo de entrada de texto
         taskInput.value = '';
+        // Salva as tarefas no localStorage
+        saveTasks();
         // Renderiza as tarefas na lista
         renderTasks();
         // Atualiza o progresso
@@ -45,6 +47,56 @@ function addTask() {
 function toggleTask(index) {
     // Inverte o estado de conclusão da tarefa no índice fornecido
     tasks[index].completed = !tasks[index].completed;
+    // Salva as tarefas no localStorage
+    saveTasks();
+    // Renderiza as tarefas na lista
+    renderTasks();
+    // Atualiza o progresso
+    updateProgress();
+}
+
+// Função para editar uma tarefa diretamente no texto
+function editTask(index) {
+    const taskSpan = document.querySelector(`#task-${index} .task-text`);
+    const currentText = taskSpan.textContent;
+
+    // Cria um campo de entrada de texto
+    const inputField = document.createElement('input');
+    inputField.type = 'text';
+    inputField.value = currentText;
+
+    // Substitui o texto atual pela caixa de texto
+    taskSpan.innerHTML = '';
+    taskSpan.appendChild(inputField);
+
+    // Foca o campo de texto para o usuário começar a digitar
+    inputField.focus();
+
+    // Evento de salvar a edição ao pressionar Enter
+    inputField.addEventListener('blur', function() {
+        const newText = inputField.value.trim();
+        if (newText !== '') {
+            tasks[index].text = newText; // Atualiza o texto da tarefa
+            saveTasks();
+            renderTasks();
+        } else {
+            taskSpan.textContent = currentText; // Restaura o texto original se vazio
+        }
+    });
+
+    inputField.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            inputField.blur(); // Finaliza a edição ao pressionar Enter
+        }
+    });
+}
+
+// Função para excluir uma tarefa
+function deleteTask(index) {
+    // Remove a tarefa do array
+    tasks.splice(index, 1);
+    // Salva as tarefas no localStorage
+    saveTasks();
     // Renderiza as tarefas na lista
     renderTasks();
     // Atualiza o progresso
@@ -59,14 +111,30 @@ function renderTasks() {
     tasks.forEach((task, index) => {
         // Cria um elemento de lista (li)
         const li = document.createElement('li');
+        li.id = `task-${index}`; // Atribui um id único para cada tarefa
         // Define o HTML interno do elemento de lista
         li.innerHTML = `
             <input type="checkbox" ${task.completed ? 'checked' : ''} onchange="toggleTask(${index})">
-            <span>${task.text}</span>
+            <span class="task-text">${task.text}</span>
+            <button onclick="editTask(${index})"><i class="fas fa-edit"></i></button>
+            <button onclick="deleteTask(${index})"><i class="fas fa-trash"></i></button>
         `;
         // Adiciona o elemento de lista à lista de tarefas
         taskList.appendChild(li);
     });
+}
+
+// Função para salvar as tarefas no localStorage
+function saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+// Função para carregar as tarefas do localStorage quando a página for carregada
+function loadTasks() {
+    if (tasks.length > 0) {
+        renderTasks();
+        updateProgress();
+    }
 }
 
 // Adiciona um ouvinte de evento de clique ao botão de adicionar tarefa
@@ -79,3 +147,6 @@ taskInput.addEventListener('keypress', function(event) {
         addTask();
     }
 });
+
+// Carregar as tarefas armazenadas ao carregar a página
+window.addEventListener('load', loadTasks);
